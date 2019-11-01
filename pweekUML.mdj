@@ -882,7 +882,7 @@
 											"top": 287,
 											"width": 255,
 											"height": 13,
-											"text": "MainAlg"
+											"text": "Algorithm"
 										},
 										{
 											"_type": "LabelView",
@@ -1304,7 +1304,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "MainAlg",
+					"name": "Algorithm",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
