@@ -286,8 +286,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -32,
-											"top": -48,
+											"left": -48,
+											"top": -96,
 											"height": 13
 										},
 										{
@@ -297,8 +297,8 @@
 												"$ref": "AAAAAAFuKFfaAVmX3MQ="
 											},
 											"font": "Arial;13;1",
-											"left": 333,
-											"top": 87,
+											"left": 325,
+											"top": 63,
 											"width": 191,
 											"height": 13,
 											"text": "Project"
@@ -311,8 +311,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -32,
-											"top": -48,
+											"left": -48,
+											"top": -96,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -325,15 +325,15 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -32,
-											"top": -48,
+											"left": -48,
+											"top": -96,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 328,
-									"top": 80,
+									"left": 320,
+									"top": 56,
 									"width": 201,
 									"height": 25,
 									"stereotypeLabel": {
@@ -369,8 +369,8 @@
 												"$ref": "AAAAAAFuKFgQEVnAMIw="
 											},
 											"font": "Arial;13;0",
-											"left": 333,
-											"top": 110,
+											"left": 325,
+											"top": 86,
 											"width": 191,
 											"height": 13,
 											"text": "+enrolledStudents",
@@ -386,8 +386,8 @@
 												"$ref": "AAAAAAFuKFg6gVnHL68="
 											},
 											"font": "Arial;13;0",
-											"left": 333,
-											"top": 125,
+											"left": 325,
+											"top": 101,
 											"width": 191,
 											"height": 13,
 											"text": "+maxStudents",
@@ -403,8 +403,8 @@
 												"$ref": "AAAAAAFuKFh99VnQTXs="
 											},
 											"font": "Arial;13;0",
-											"left": 333,
-											"top": 140,
+											"left": 325,
+											"top": 116,
 											"width": 191,
 											"height": 13,
 											"text": "+projectID",
@@ -420,8 +420,8 @@
 												"$ref": "AAAAAAFuKFizcVnYSzA="
 											},
 											"font": "Arial;13;0",
-											"left": 333,
-											"top": 155,
+											"left": 325,
+											"top": 131,
 											"width": 191,
 											"height": 13,
 											"text": "+numBoys",
@@ -437,8 +437,8 @@
 												"$ref": "AAAAAAFuKFk7u1nfTXM="
 											},
 											"font": "Arial;13;0",
-											"left": 333,
-											"top": 170,
+											"left": 325,
+											"top": 146,
 											"width": 191,
 											"height": 13,
 											"text": "+numGirls",
@@ -446,8 +446,8 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 328,
-									"top": 105,
+									"left": 320,
+									"top": 81,
 									"width": 201,
 									"height": 83
 								},
@@ -471,8 +471,8 @@
 												"$ref": "AAAAAAFuKFly+Vnm5zw="
 											},
 											"font": "Arial;13;0",
-											"left": 333,
-											"top": 193,
+											"left": 325,
+											"top": 169,
 											"width": 191,
 											"height": 13,
 											"text": "+getMaxStudents()",
@@ -488,8 +488,8 @@
 												"$ref": "AAAAAAFuKFnTQlntiI8="
 											},
 											"font": "Arial;13;0",
-											"left": 333,
-											"top": 208,
+											"left": 325,
+											"top": 184,
 											"width": 191,
 											"height": 13,
 											"text": "+getNumBoys()",
@@ -505,19 +505,36 @@
 												"$ref": "AAAAAAFuKFnzC1n0hmk="
 											},
 											"font": "Arial;13;0",
-											"left": 333,
-											"top": 223,
+											"left": 325,
+											"top": 199,
 											"width": 191,
 											"height": 13,
 											"text": "+getNumGirls()",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFuNMnjRCBoaFU=",
+											"_parent": {
+												"$ref": "AAAAAAFuKFfaAVmdzJc="
+											},
+											"model": {
+												"$ref": "AAAAAAFuNMnjHCBla0Y="
+											},
+											"font": "Arial;13;0",
+											"left": 325,
+											"top": 214,
+											"width": 191,
+											"height": 13,
+											"text": "+getID()",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 328,
-									"top": 188,
+									"left": 320,
+									"top": 164,
 									"width": 201,
-									"height": 53
+									"height": 68
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -530,8 +547,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -16,
-									"top": -24,
+									"left": -24,
+									"top": -48,
 									"width": 10,
 									"height": 10
 								},
@@ -546,18 +563,18 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -16,
-									"top": -24,
+									"left": -24,
+									"top": -48,
 									"width": 10,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 328,
-							"top": 80,
+							"left": 320,
+							"top": 56,
 							"width": 201,
-							"height": 161,
+							"height": 176,
 							"nameCompartment": {
 								"$ref": "AAAAAAFuKFfaAVmX3MQ="
 							},
@@ -615,7 +632,7 @@
 											"font": "Arial;13;1",
 											"left": 69,
 											"top": 271,
-											"width": 208.47607421875,
+											"width": 240.2841796875,
 											"height": 13,
 											"text": "Database"
 										},
@@ -650,7 +667,7 @@
 									"font": "Arial;13;0",
 									"left": 64,
 									"top": 264,
-									"width": 218.47607421875,
+									"width": 250.2841796875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuKFpfg1oGc+c="
@@ -687,7 +704,7 @@
 											"font": "Arial;13;0",
 											"left": 69,
 											"top": 294,
-											"width": 208.47607421875,
+											"width": 240.2841796875,
 											"height": 13,
 											"text": "+SQLiteDB: db",
 											"horizontalAlignment": 0
@@ -696,7 +713,7 @@
 									"font": "Arial;13;0",
 									"left": 64,
 									"top": 289,
-									"width": 218.47607421875,
+									"width": 250.2841796875,
 									"height": 23
 								},
 								{
@@ -711,6 +728,23 @@
 									"subViews": [
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAFuNMslGCCBiGY=",
+											"_parent": {
+												"$ref": "AAAAAAFuKFpfg1oLyLY="
+											},
+											"model": {
+												"$ref": "AAAAAAFuNMsk8SB+TOY="
+											},
+											"font": "Arial;13;0",
+											"left": 69,
+											"top": 317,
+											"width": 240.2841796875,
+											"height": 13,
+											"text": "+Database(String url)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAFuKFrNy1o4gTQ=",
 											"_parent": {
 												"$ref": "AAAAAAFuKFpfg1oLyLY="
@@ -720,10 +754,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 317,
-											"width": 208.47607421875,
+											"top": 332,
+											"width": 240.2841796875,
 											"height": 13,
-											"text": "+getPreference(Person, preference)",
+											"text": "+getPreference(int StudentId, preference)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -737,10 +771,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 332,
-											"width": 208.47607421875,
+											"top": 347,
+											"width": 240.2841796875,
 											"height": 13,
-											"text": "+getGender(Person)",
+											"text": "+getGender(int StudentId)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -754,10 +788,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 347,
-											"width": 208.47607421875,
+											"top": 362,
+											"width": 240.2841796875,
 											"height": 13,
-											"text": "+getPrevYears(Person)",
+											"text": "+getPrevYears(int StudentId)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -771,18 +805,69 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 362,
-											"width": 208.47607421875,
+											"top": 377,
+											"width": 240.2841796875,
 											"height": 13,
-											"text": "+getGrade(Person)",
+											"text": "+getGrade(int StudentId)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFuNMqTuSBvkZg=",
+											"_parent": {
+												"$ref": "AAAAAAFuKFpfg1oLyLY="
+											},
+											"model": {
+												"$ref": "AAAAAAFuNMqTkiBsgmU="
+											},
+											"font": "Arial;13;0",
+											"left": 69,
+											"top": 392,
+											"width": 240.2841796875,
+											"height": 13,
+											"text": "+getMinStudents(int ProjId)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFuNMrlwiB4kVQ=",
+											"_parent": {
+												"$ref": "AAAAAAFuKFpfg1oLyLY="
+											},
+											"model": {
+												"$ref": "AAAAAAFuNMrlnSB1ExE="
+											},
+											"font": "Arial;13;0",
+											"left": 69,
+											"top": 407,
+											"width": 240.2841796875,
+											"height": 13,
+											"text": "+getMaxStudents(int ProjId)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFuNMuWNCCRwGY=",
+											"_parent": {
+												"$ref": "AAAAAAFuKFpfg1oLyLY="
+											},
+											"model": {
+												"$ref": "AAAAAAFuNMuV8yCOyhQ="
+											},
+											"font": "Arial;13;0",
+											"left": 69,
+											"top": 422,
+											"width": 240.2841796875,
+											"height": 13,
+											"text": "-connect()",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 64,
 									"top": 312,
-									"width": 218.47607421875,
-									"height": 68
+									"width": 250.2841796875,
+									"height": 128
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -821,8 +906,8 @@
 							"containerChangeable": true,
 							"left": 64,
 							"top": 264,
-							"width": 218.47607421875,
-							"height": 116,
+							"width": 250.2841796875,
+							"height": 176,
 							"nameCompartment": {
 								"$ref": "AAAAAAFuKFpfg1oFXXc="
 							},
@@ -1086,7 +1171,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuKFeDhVliWDk="
 							},
-							"name": "studentID"
+							"name": "studentID",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1094,7 +1180,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuKFeDhVliWDk="
 							},
-							"name": "currentPreference"
+							"name": "currentPreference",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -1130,7 +1217,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuKFfaAFmU7vY="
 							},
-							"name": "enrolledStudents"
+							"name": "enrolledStudents",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1138,7 +1226,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuKFfaAFmU7vY="
 							},
-							"name": "maxStudents"
+							"name": "maxStudents",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1146,7 +1235,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuKFfaAFmU7vY="
 							},
-							"name": "projectID"
+							"name": "projectID",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1154,7 +1244,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuKFfaAFmU7vY="
 							},
-							"name": "numBoys"
+							"name": "numBoys",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1162,7 +1253,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuKFfaAFmU7vY="
 							},
-							"name": "numGirls"
+							"name": "numGirls",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -1189,6 +1281,14 @@
 								"$ref": "AAAAAAFuKFfaAFmU7vY="
 							},
 							"name": "getNumGirls"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFuNMnjHCBla0Y=",
+							"_parent": {
+								"$ref": "AAAAAAFuKFfaAFmU7vY="
+							},
+							"name": "getID"
 						}
 					]
 				},
@@ -1213,6 +1313,25 @@
 					"operations": [
 						{
 							"_type": "UMLOperation",
+							"_id": "AAAAAAFuNMsk8SB+TOY=",
+							"_parent": {
+								"$ref": "AAAAAAFuKFpfgloCOPo="
+							},
+							"name": "Database",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFuNMs90iCFnAw=",
+									"_parent": {
+										"$ref": "AAAAAAFuNMsk8SB+TOY="
+									},
+									"name": "String url",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
 							"_id": "AAAAAAFuKFrNqFo1t5M=",
 							"_parent": {
 								"$ref": "AAAAAAFuKFpfgloCOPo="
@@ -1225,8 +1344,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFrNqFo1t5M="
 									},
-									"name": "Person",
-									"type": ""
+									"name": "int StudentId"
 								},
 								{
 									"_type": "UMLParameter",
@@ -1234,8 +1352,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFrNqFo1t5M="
 									},
-									"name": "preference",
-									"type": ""
+									"name": "preference"
 								}
 							]
 						},
@@ -1253,8 +1370,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFwHJlp4M5Y="
 									},
-									"name": "Person",
-									"type": ""
+									"name": "int StudentId"
 								}
 							]
 						},
@@ -1272,8 +1388,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFwob1p/yhY="
 									},
-									"name": "Person",
-									"type": ""
+									"name": "int StudentId"
 								}
 							]
 						},
@@ -1291,10 +1406,54 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFyIbFqLI0g="
 									},
-									"name": "Person",
-									"type": ""
+									"name": "int StudentId"
 								}
 							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFuNMqTkiBsgmU=",
+							"_parent": {
+								"$ref": "AAAAAAFuKFpfgloCOPo="
+							},
+							"name": "getMinStudents",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFuNMrYmiBz2Tw=",
+									"_parent": {
+										"$ref": "AAAAAAFuNMqTkiBsgmU="
+									},
+									"name": "int ProjId"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFuNMrlnSB1ExE=",
+							"_parent": {
+								"$ref": "AAAAAAFuKFpfgloCOPo="
+							},
+							"name": "getMaxStudents",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFuNMsPaSB8LAs=",
+									"_parent": {
+										"$ref": "AAAAAAFuNMrlnSB1ExE="
+									},
+									"name": "int ProjId"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFuNMuV8yCOyhQ=",
+							"_parent": {
+								"$ref": "AAAAAAFuKFpfgloCOPo="
+							},
+							"name": "connect",
+							"visibility": "private"
 						}
 					]
 				},
@@ -1312,7 +1471,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuKFvQuVpP5vs="
 							},
-							"name": "Queue of People"
+							"name": "Queue of People",
+							"type": ""
 						}
 					],
 					"operations": [
