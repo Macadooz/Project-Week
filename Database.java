@@ -6,7 +6,7 @@
     Changelog:
 
     Jackson Bremen
-    -November 4, 2019: Implemented V1
+    -November 4, 2019, 23:00: Implemented V1
 */
 
 import java.sql.DriverManager;
