@@ -1,37 +1,51 @@
 public class Project{
-	int enrolledstudents
-	int maxstudents
-	int projectID
-	int numBoys
-	int numgirls
+	int enrolledStudents;
+	int maxStudents;
+	int projectID;
+	int numBoys;
+	int numGirls;
 
-	public Project(int projectID, int maxstudents){
+	public Project(int projectID, int maxStudents){
 		this.projectID = projectID;
-		this.maxstudents = maxstudents;
+		this.maxStudents = maxStudents;
+		this.enrolledStudents = 0;
+		this.numBoys = 0;
+		this.numGirls = 0;
 		
 	}
 
-	public Project(int projectID, int enrolledstudents, int numBoys){
+	public Project(int projectID, int enrolledStudents, int numBoys, int numGirls){
 		this.projectID = projectID;
-		this.enrolledstudents = enrolledstudents;
+		this.enrolledStudents = enrolledStudents;
 		this.numBoys = numBoys;
-    		this.numGirls = numGirls;
+    	this.numGirls = numGirls;
 	}
 	
 	//getters
+	public int getProjectID(){
+		return this.projectID;
+	}
 	
-	public int getnumBoys(int projectID, int numBoys){
-		this.projectID = projectID;
+	public int getnumBoys(int numBoys){
 		return numBoys;
 	}
 	
-	public int getnumGirls(int projectID, int numGirls){
-		this.projectID = projectID;
+	public int getnumGirls(int numGirls){
 		return numGirls;
 	}
 	
-	public int getmaxstudents(int projectID, int maxstudents){
-		this.projectID = projectID;
-		return maxstudents;
+	public int getmaxStudents(int maxstudents){
+		return maxStudents;
 	}
+	public void setEnrolledStudents(int newStudents){
+		this.enrolledStudents = newStudents;
+	}
+	public void setNumBoys(int boys){
+		this.numBoys = boys;
+	}
+	public void setNumGirls(int girls){
+		this.numGirls = girls;
+	}
+	
+	
 }
