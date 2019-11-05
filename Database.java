@@ -204,7 +204,7 @@ public class Database {
 
         Returns integer ArrayList holding all student ids
     */
-    public ArrayList getAllStudentIds() {
+    public ArrayList<Integer> getAllStudentIds() {
         String sql = "SELECT StudentId FROM StudentPrevAvgs";
         ArrayList<Integer> IDValues = new ArrayList<Integer>();
 
@@ -228,7 +228,7 @@ public class Database {
 
         Returns integer ArrayList holding all student ids
     */
-    public ArrayList getAllCourseIds() {
+    public ArrayList<Integer> getAllCourseIds() {
         String sql = "SELECT ProjID FROM ProjStats";
         ArrayList<Integer> IDValues = new ArrayList<Integer>();
 

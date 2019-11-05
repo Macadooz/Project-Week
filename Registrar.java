@@ -1,9 +1,9 @@
 import java.util.*;
 
 class Registrar {
-    ArrayList<Person> allPeople = new ArrayList();
-    ArrayList<Project> allCourses = new ArrayList();
-    ArrayList<Person> unluckyPeople = new ArrayList(); //People who were unable to be sorted into one of their choices
+    ArrayList<Person> allPeople = new ArrayList<Person>();
+    ArrayList<Project> allCourses = new ArrayList<Project>();
+    ArrayList<Person> unluckyPeople = new ArrayList<Person>(); //People who were unable to be sorted into one of their choices
     Database db;
 	int currentIndex;
     int sizeOfPeople;
@@ -14,14 +14,14 @@ class Registrar {
     public Registrar(String url) {
         db = new Database(url);
 
-        ArrayList tempList = db.getAllStudentIds();
-        for (int i=0; i< tempList.size(); i++) {
+        ArrayList<Integer> tempList = db.getAllStudentIds();
+        for (int i=0; i < tempList.size(); i++) {
 			allPeople.add(new Person(tempList.get(i)));
 		}
 
         tempList = db.getAllCourseIds();
         int pid;
-        for (int i=0; i< tempList.size(); i++) {
+        for (int i=0; i < tempList.size(); i++) {
             pid = tempList.get(i);
 			allCourses.add(new Project(pid, db.getMaxStudents(pid)));
 		}
@@ -43,6 +43,7 @@ class Registrar {
         }
 
         //then try to actually place them
+        return p; //for now
     }
 
     /**

@@ -12,6 +12,7 @@ class Algorithm {
 				nextP = reg.tryPlacePerson(nextP);
 			}
 		}
-		System.out.println(test);
+		//Do some stuff to return the values, probably going to have to save to a db or a file or something
+		
 	}
 }
