@@ -16,6 +16,22 @@ public class Project{
 		this.enrolledstudents = enrolledstudents;
 		this.numBoys = numBoys;
     		this.numGirls = numGirls;
-    
+	}
+	
+	//getters
+	
+	public int getnumBoys(int projectID, int numBoys){
+		this.projectID = projectID;
+		return numBoys;
+	}
+	
+	public int getnumGirls(int projectID, int numGirls){
+		this.projectID = projectID;
+		return numGirls;
+	}
+	
+	public int getmaxstudents(int projectID, int maxstudents){
+		this.projectID = projectID;
+		return maxstudents;
 	}
 }
