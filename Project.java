@@ -15,7 +15,7 @@ public class Project{
 		this.projectID = projectID;
 		this.enrolledstudents = enrolledstudents;
 		this.numBoys = numBoys;
-    this.numGirls = numGirls;
+    		this.numGirls = numGirls;
     
 	}
 }
