@@ -27,22 +27,19 @@ public class Person{
 		this.score = score;
 		this.currentPreference = 1;
 	}
-	
+
 	//getter
 	public int getStudentID(){
 		return this.studentID;
 	}
-	
+
 	//getter
 	public int getCurrentPreference(){
 		return this.currentPreference;
 	}
-	
+
 	//getter
 	public int getScore(){
 		return this.score;
 	}
-
-
-
 }
