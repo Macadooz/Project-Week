@@ -1,10 +1,20 @@
-//Changelog: Jackson
+/**
+    Database.java
+
+    Utility class for SQL Database
+
+    Changelog:
+
+    Jackson Bremen
+    -November 4, 2019: Implemented V1
+*/
 
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.util.*;
 
 public class Database {
     private final String url;
@@ -14,24 +24,14 @@ public class Database {
         this.url = url;
     }
 
-    //for testing 
-    public void printAll(){
-      String sql = "SELECT ? FROM StudentPrevAvgs WHERE StudentID = ?";
-
-      try {
-          Connection conn = this.connect();
-          PreparedStatement stmt = conn.prepareStatement(sql);
-
-          String test = "Rank16";
-          stmt.setString(1, test);
-          stmt.setString(2, "9");
-
-          ResultSet rs = stmt.executeQuery();
-          System.out.println(rs.getInt(1));
-
-      } catch (SQLException e) {
-          System.out.println(e.getMessage());
-      }
+    private Connection connect() {
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(this.url);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
     }
 
     /**
@@ -90,6 +90,34 @@ public class Database {
     }
 
     /**
+        public String getGrade(int studentId,)
+
+        takes in a student ID and returns the grade/class year
+
+        Precondition:
+            studentId is valid
+    */
+    public int getGrade(int studentId) {
+        //reference the DB, return the gender
+        //NOTE: might want to make this more PC in the future
+        String sql = "SELECT GradYear FROM Raw WHERE StudentID = (?)";
+
+        try {
+            Connection conn = this.connect();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setDouble(1, studentId);
+
+            ResultSet rs = stmt.executeQuery();
+            return rs.getInt(1);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return -1;
+
+    }
+
+    /**
         public int[] getPrevYears(int studentId)
 
         takes in a student ID, returns choices of previous 3 years
@@ -100,21 +128,21 @@ public class Database {
     public int[] getPrevYears(int studentId) {
         //returns a list of previous three years
         int prevYears[] = new int[3];
-        String headers[] = new String[]{"Rank18","Rank17","Rank16"};
         String sql;
 
-        sql = "SELECT (?) FROM StudentPrevAvgs WHERE StudentID = (?)";
+        sql = "SELECT Rank18, Rank17, Rank16 FROM StudentPrevAvgs WHERE StudentID = (?)";
 
         try {
             Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "Rank18");
-            stmt.setDouble(2, 1);
+            stmt.setDouble(1, studentId);
 
             ResultSet rs = stmt.executeQuery();
-            System.out.println(rs.getInt(1));
+
+            for (int i=0; i<3; i++) {
+              prevYears[i] = rs.getInt(i+1);
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -172,13 +200,52 @@ public class Database {
         return -1;
     }
 
-    private Connection connect() {
-        Connection conn = null;
+    /**
+        public ArrayList<Integer> getAllStudentIds()
+
+        Returns integer ArrayList holding all student ids
+    */
+    public ArrayList getAllStudentIds() {
+        String sql = "SELECT StudentId FROM StudentPrevAvgs";
+        ArrayList<Integer> IDValues = new ArrayList<Integer>();
+
         try {
-            conn = DriverManager.getConnection(this.url);
+            Connection conn = this.connect();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                IDValues.add(rs.getInt(1));
+            }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return conn;
+        return IDValues;
     }
+
+    /**
+        public ArrayList<Integer> getAllStudentIds()
+
+        Returns integer ArrayList holding all student ids
+    */
+    public ArrayList getAllCourseIds() {
+        String sql = "SELECT ProjID FROM ProjStats";
+        ArrayList<Integer> IDValues = new ArrayList<Integer>();
+
+        try {
+            Connection conn = this.connect();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                IDValues.add(rs.getInt(1));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return IDValues;
+    }
+
 }

@@ -745,6 +745,23 @@
 										},
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAFuNMuWNCCRwGY=",
+											"_parent": {
+												"$ref": "AAAAAAFuKFpfg1oLyLY="
+											},
+											"model": {
+												"$ref": "AAAAAAFuNMuV8yCOyhQ="
+											},
+											"font": "Arial;13;0",
+											"left": 69,
+											"top": 332,
+											"width": 240.2841796875,
+											"height": 13,
+											"text": "-connect()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAFuKFrNy1o4gTQ=",
 											"_parent": {
 												"$ref": "AAAAAAFuKFpfg1oLyLY="
@@ -754,7 +771,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 332,
+											"top": 347,
 											"width": 240.2841796875,
 											"height": 13,
 											"text": "+getPreference(int StudentId, preference)",
@@ -771,7 +788,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 347,
+											"top": 362,
 											"width": 240.2841796875,
 											"height": 13,
 											"text": "+getGender(int StudentId)",
@@ -788,7 +805,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 362,
+											"top": 377,
 											"width": 240.2841796875,
 											"height": 13,
 											"text": "+getPrevYears(int StudentId)",
@@ -805,7 +822,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 377,
+											"top": 392,
 											"width": 240.2841796875,
 											"height": 13,
 											"text": "+getGrade(int StudentId)",
@@ -822,7 +839,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 392,
+											"top": 407,
 											"width": 240.2841796875,
 											"height": 13,
 											"text": "+getMinStudents(int ProjId)",
@@ -839,7 +856,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 407,
+											"top": 422,
 											"width": 240.2841796875,
 											"height": 13,
 											"text": "+getMaxStudents(int ProjId)",
@@ -847,19 +864,36 @@
 										},
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAFuNMuWNCCRwGY=",
+											"_id": "AAAAAAFuOWhmknqqf3M=",
 											"_parent": {
 												"$ref": "AAAAAAFuKFpfg1oLyLY="
 											},
 											"model": {
-												"$ref": "AAAAAAFuNMuV8yCOyhQ="
+												"$ref": "AAAAAAFuOWhmfHqnVKo="
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 422,
+											"top": 437,
 											"width": 240.2841796875,
 											"height": 13,
-											"text": "-connect()",
+											"text": "+getAllStudentIds()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFuOWiZQXq5Amg=",
+											"_parent": {
+												"$ref": "AAAAAAFuKFpfg1oLyLY="
+											},
+											"model": {
+												"$ref": "AAAAAAFuOWiZM3q2MX8="
+											},
+											"font": "Arial;13;0",
+											"left": 69,
+											"top": 452,
+											"width": 240.2841796875,
+											"height": 13,
+											"text": "+getAllCourseIds()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -867,7 +901,7 @@
 									"left": 64,
 									"top": 312,
 									"width": 250.2841796875,
-									"height": 128
+									"height": 158
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -907,7 +941,7 @@
 							"left": 64,
 							"top": 264,
 							"width": 250.2841796875,
-							"height": 176,
+							"height": 206,
 							"nameCompartment": {
 								"$ref": "AAAAAAFuKFpfg1oFXXc="
 							},
@@ -1332,6 +1366,15 @@
 						},
 						{
 							"_type": "UMLOperation",
+							"_id": "AAAAAAFuNMuV8yCOyhQ=",
+							"_parent": {
+								"$ref": "AAAAAAFuKFpfgloCOPo="
+							},
+							"name": "connect",
+							"visibility": "private"
+						},
+						{
+							"_type": "UMLOperation",
 							"_id": "AAAAAAFuKFrNqFo1t5M=",
 							"_parent": {
 								"$ref": "AAAAAAFuKFpfgloCOPo="
@@ -1344,7 +1387,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFrNqFo1t5M="
 									},
-									"name": "int StudentId"
+									"name": "int StudentId",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -1352,7 +1396,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFrNqFo1t5M="
 									},
-									"name": "preference"
+									"name": "preference",
+									"type": ""
 								}
 							]
 						},
@@ -1370,7 +1415,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFwHJlp4M5Y="
 									},
-									"name": "int StudentId"
+									"name": "int StudentId",
+									"type": ""
 								}
 							]
 						},
@@ -1388,7 +1434,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFwob1p/yhY="
 									},
-									"name": "int StudentId"
+									"name": "int StudentId",
+									"type": ""
 								}
 							]
 						},
@@ -1406,7 +1453,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFuKFyIbFqLI0g="
 									},
-									"name": "int StudentId"
+									"name": "int StudentId",
+									"type": ""
 								}
 							]
 						},
@@ -1424,7 +1472,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFuNMqTkiBsgmU="
 									},
-									"name": "int ProjId"
+									"name": "int ProjId",
+									"type": ""
 								}
 							]
 						},
@@ -1442,18 +1491,26 @@
 									"_parent": {
 										"$ref": "AAAAAAFuNMrlnSB1ExE="
 									},
-									"name": "int ProjId"
+									"name": "int ProjId",
+									"type": ""
 								}
 							]
 						},
 						{
 							"_type": "UMLOperation",
-							"_id": "AAAAAAFuNMuV8yCOyhQ=",
+							"_id": "AAAAAAFuOWhmfHqnVKo=",
 							"_parent": {
 								"$ref": "AAAAAAFuKFpfgloCOPo="
 							},
-							"name": "connect",
-							"visibility": "private"
+							"name": "getAllStudentIds"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFuOWiZM3q2MX8=",
+							"_parent": {
+								"$ref": "AAAAAAFuKFpfgloCOPo="
+							},
+							"name": "getAllCourseIds"
 						}
 					]
 				},
