@@ -4,8 +4,7 @@ import java.util.Map;
 
 class Registrar {
     ArrayList<Person> allPeople = new ArrayList<Person>();
-    ArrayList<Project> allCourses = new ArrayList<Project>();
-    HashMap<Integer, Person> allCourses = new HashMap<>();
+    HashMap<Integer, Project> allCourses = new HashMap<>();
     ArrayList<Person> unluckyPeople = new ArrayList<Person>(); //People who were unable to be sorted into one of their choices
     Database db;
 	int currentIndex;
@@ -19,8 +18,9 @@ class Registrar {
 
         ArrayList<Integer> tempList = db.getAllStudentIds();
         for (int i=0; i < tempList.size(); i++) {
-			allPeople.add(new Person(tempList.get(i)));
-		}
+			allPeople.add(new Person(tempList.get(i), 10));
+            // System.out.println(tempList.get(i));
+        }
 
         tempList = db.getAllCourseIds();
         int pid;
@@ -46,6 +46,10 @@ class Registrar {
         }
 
         int nextPrefChoice = db.getPreference(p.getStudentID(), p.getCurrentPreference());
+        if (nextPrefChoice == Integer.MIN_VALUE) {
+            unluckyPeople.add(p);
+            return null;
+        }
 
         Project nextProject = allCourses.get(nextPrefChoice);
 
@@ -54,14 +58,16 @@ class Registrar {
             return null;
         }
 
-        Person lowestPerson = nextProject.getLowestPerson();
+        Person lowestPerson = nextProject.getLowestScorePerson();
 
         if (lowestPerson.getScore() < p.getScore()) {
             nextProject.removeStudent(lowestPerson);
             nextProject.addStudent(p);
+
+            lowestPerson.increaseCurrentPreference();
             return lowestPerson;
         }        
-
+        p.increaseCurrentPreference();
         return p; //for now
     }
 
@@ -85,6 +91,16 @@ class Registrar {
     */
     public Person getNextPerson() {
         return allPeople.get(currentIndex++);
+    }
+
+    public void printProjects() {
+        ArrayList<Integer> tempList = db.getAllCourseIds();
+        for (int i=0; i<tempList.size(); i++)
+            System.out.println(allCourses.get(tempList.get(i)));
+    }
+
+    public void printBadPeople() {
+        System.out.println(unluckyPeople);
     }
 }
 

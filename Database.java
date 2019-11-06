@@ -29,7 +29,7 @@ public class Database {
         try {
             conn = DriverManager.getConnection(this.url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in connect: " + e.getMessage());
         }
         return conn;
     }
@@ -56,9 +56,9 @@ public class Database {
             return rs.getInt(1);
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in getPreference: " + studentId + " " + preference + e.getMessage());
         }
-        return -1;
+        return Integer.MIN_VALUE;
     }
 
     /**
@@ -83,7 +83,7 @@ public class Database {
             return rs.getString(1);
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in getGender: " + e.getMessage());
         }
         return "-1";
 
@@ -111,7 +111,7 @@ public class Database {
             return rs.getInt(1);
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in getGrade: " + e.getMessage());
         }
         return -1;
     }
@@ -144,7 +144,7 @@ public class Database {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in getPrevYears: " + e.getMessage());
         }
         return prevYears;
     }
@@ -169,7 +169,7 @@ public class Database {
             return rs.getInt(1);
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in getMinStudents: " + e.getMessage());
         }
         return -1;
     }
@@ -194,7 +194,7 @@ public class Database {
             return rs.getInt(1);
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in getMaxStudents: " + e.getMessage());
         }
         return -1;
     }
@@ -205,7 +205,7 @@ public class Database {
         Returns integer ArrayList holding all student ids
     */
     public ArrayList<Integer> getAllStudentIds() {
-        String sql = "SELECT StudentId FROM StudentPrevAvgs";
+        String sql = "SELECT StudentId FROM Raw WHERE PrefNum=1";
         ArrayList<Integer> IDValues = new ArrayList<Integer>();
 
         try {
@@ -218,7 +218,7 @@ public class Database {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in getAllStudentIds: " + e.getMessage());
         }
         return IDValues;
     }
@@ -242,7 +242,7 @@ public class Database {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error in getAllCourseIds: " + e.getMessage());
         }
         return IDValues;
     }

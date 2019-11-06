@@ -53,8 +53,14 @@ public class Project{
 		this.numGirls = girls;
 	}
 	public Person getLowestScorePerson() {
+		if (enrolledStudents.size() == 0) {
+			System.out.println("Printing null");
+			return null;
+		}
+		
 		int lowestScore = enrolledStudents.get(0).getScore();
 		Person lowestScorePerson = enrolledStudents.get(0);
+
 		for (int i=0; i<enrolledStudents.size(); i++) {
 			if (enrolledStudents.get(i).getScore() < lowestScore) {
 				lowestScore = enrolledStudents.get(i).getScore();
@@ -64,6 +70,9 @@ public class Project{
 		return lowestScorePerson;
 	}
 	public boolean isFull() {
-		return enrolledStudents < maxStudents;
+		return enrolledStudents.size() >= maxStudents;
+	}
+	public String toString() {
+		return "Project#" + projectID+ enrolledStudents.toString();
 	}
 }

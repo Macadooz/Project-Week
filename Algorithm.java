@@ -13,6 +13,7 @@ class Algorithm {
 			}
 		}
 		//Do some stuff to return the values, probably going to have to save to a db or a file or something
-		
+		reg.printProjects();
+		reg.printBadPeople();
 	}
 }

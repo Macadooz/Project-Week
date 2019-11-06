@@ -38,8 +38,16 @@ public class Person{
 		return this.currentPreference;
 	}
 
+	public void increaseCurrentPreference() {
+		currentPreference++;
+	}
+
 	//getter
 	public int getScore(){
 		return this.score;
+	}
+
+	public String toString() {
+		return "#" + studentID+":"+currentPreference;
 	}
 }
