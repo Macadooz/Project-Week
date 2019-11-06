@@ -52,12 +52,18 @@ public class Project{
 	public void setNumGirls(int girls){
 		this.numGirls = girls;
 	}
-	public int getLowestScore() {
+	public Person getLowestScorePerson() {
 		int lowestScore = enrolledStudents.get(0).getScore();
+		Person lowestScorePerson = enrolledStudents.get(0);
 		for (int i=0; i<enrolledStudents.size(); i++) {
-			lowestScore = Math.min(lowestScore, enrolledStudents.get(i).getScore());
+			if (enrolledStudents.get(i).getScore() < lowestScore) {
+				lowestScore = enrolledStudents.get(i).getScore();
+				lowestScorePerson = enrolledStudents.get(i);
+			}
 		}
-		return lowestScore;
+		return lowestScorePerson;
 	}
-
+	public boolean isFull() {
+		return enrolledStudents < maxStudents;
+	}
 }

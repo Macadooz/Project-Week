@@ -1,8 +1,11 @@
 import java.util.*;
+import java.util.HashMap; 
+import java.util.Map; 
 
 class Registrar {
     ArrayList<Person> allPeople = new ArrayList<Person>();
     ArrayList<Project> allCourses = new ArrayList<Project>();
+    HashMap<Integer, Person> allCourses = new HashMap<>();
     ArrayList<Person> unluckyPeople = new ArrayList<Person>(); //People who were unable to be sorted into one of their choices
     Database db;
 	int currentIndex;
@@ -23,7 +26,7 @@ class Registrar {
         int pid;
         for (int i=0; i < tempList.size(); i++) {
             pid = tempList.get(i);
-			allCourses.add(new Project(pid, db.getMaxStudents(pid)));
+			allCourses.put(pid, new Project(pid, db.getMaxStudents(pid)));
 		}
 
         currentIndex = 0;
@@ -37,12 +40,28 @@ class Registrar {
     */
     public Person tryPlacePerson(Person p) {
         //first check if the person has more choices
-        if (p.getCurrentPreference() > 8) {
+        if ( p.getCurrentPreference() > 8) {
             unluckyPeople.add(p);
             return null;
         }
 
-        //then try to actually place them
+        int nextPrefChoice = db.getPreference(p.getStudentID(), p.getCurrentPreference());
+
+        Project nextProject = allCourses.get(nextPrefChoice);
+
+        if (!nextProject.isFull()) {
+            nextProject.addStudent(p);
+            return null;
+        }
+
+        Person lowestPerson = nextProject.getLowestPerson();
+
+        if (lowestPerson.getScore() < p.getScore()) {
+            nextProject.removeStudent(lowestPerson);
+            nextProject.addStudent(p);
+            return lowestPerson;
+        }        
+
         return p; //for now
     }
 
