@@ -40,6 +40,9 @@ public class Project{
 	public void setEnrolledStudents(ArrayList<Person> newStudents){
 		this.enrolledStudents = newStudents;
 	}
+	public ArrayList<Person> getEnrolledStudents(){
+		return enrolledStudents;
+	}
 	public void addStudent(Person p){
 		this.enrolledStudents.add(p);
 	}

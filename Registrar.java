@@ -18,7 +18,7 @@ class Registrar {
 
         ArrayList<Integer> tempList = db.getAllStudentIds();
         for (int i=0; i < tempList.size(); i++) {
-			allPeople.add(new Person(tempList.get(i), 10));
+			allPeople.add(new Person(tempList.get(i), calculateScore(tempList.get(i))));
             // System.out.println(tempList.get(i));
         }
 
@@ -31,6 +31,24 @@ class Registrar {
 
         currentIndex = 0;
         sizeOfPeople = allPeople.size();
+    }
+
+    private int calculateScore(int studentId) {
+        int prevScores[] = db.getPrevYears(studentId);
+        int score=0;
+        for (int i=0; i<3;i++){
+            if (prevScores[i]>0) {
+                score += prevScores[i];
+            }
+            else {
+                score += 3;
+            }
+        }
+
+        score *= 100;
+        score /= 3;
+
+        return score;
     }
 
     /**
@@ -46,7 +64,7 @@ class Registrar {
         }
 
         int nextPrefChoice = db.getPreference(p.getStudentID(), p.getCurrentPreference());
-        if (nextPrefChoice == Integer.MIN_VALUE) {
+        if (nextPrefChoice == Integer.MIN_VALUE || nextPrefChoice == 0) {
             unluckyPeople.add(p);
             return null;
         }
@@ -101,6 +119,17 @@ class Registrar {
 
     public void printBadPeople() {
         System.out.println(unluckyPeople);
+    }
+
+    public void outputResults() {
+        ArrayList<Integer> tempList = db.getAllStudentIds();
+        int scores[] = new int[9];
+        for (int i=0; i < tempList.size(); i++) {
+            scores[allPeople.get(i).getCurrentPreference()-1]++;
+        }
+        for (int i=0; i<9; i++) {
+            System.out.println("Choice"+(i+1)+": "+scores[i]);
+        }
     }
 }
 

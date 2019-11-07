@@ -39,6 +39,8 @@ public class Database {
 
         takes in a student ID and Preference number
 
+        returns courseID as an int
+
         Precondition:
             studentId is valid
     */
@@ -64,7 +66,7 @@ public class Database {
     /**
         public String getGender(int studentId,)
 
-        takes in a student ID and returns the gender
+        takes in a student ID and returns the gender as a string
 
         Precondition:
             studentId is valid
@@ -98,8 +100,7 @@ public class Database {
             studentId is valid
     */
     public int getGrade(int studentId) {
-        //reference the DB, return the gender
-        //NOTE: might want to make this more PC in the future
+        //reference the DB, return the grade
         String sql = "SELECT GradYear FROM Raw WHERE StudentID = (?)";
 
         try {
@@ -120,6 +121,7 @@ public class Database {
         public int[] getPrevYears(int studentId)
 
         takes in a student ID, returns choices of previous 3 years
+        Has 0 if they were not around for that year
 
         Precondition:
             studentId is valid
@@ -224,9 +226,9 @@ public class Database {
     }
 
     /**
-        public ArrayList<Integer> getAllStudentIds()
+        public ArrayList<Integer> getAllCourseIds()
 
-        Returns integer ArrayList holding all student ids
+        Returns integer ArrayList holding all course ids
     */
     public ArrayList<Integer> getAllCourseIds() {
         String sql = "SELECT ProjID FROM ProjStats";
@@ -246,5 +248,4 @@ public class Database {
         }
         return IDValues;
     }
-
 }
