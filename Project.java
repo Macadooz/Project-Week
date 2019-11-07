@@ -58,10 +58,12 @@ public class Project{
 		for(int i = 0; i < enrolledStudents.size(); i++){
 			Person current = enrolledStudents.get(i);
 			if(p.getScore() < current.getScore()){
-				enrolledStudents.add(i, p);
+				this.enrolledStudents.add(i, p);
+				return;
 			}
 		}
 		this.enrolledStudents.add(p);
+	
 	}
 
 	public void removeStudent(Person p){

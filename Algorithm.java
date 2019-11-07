@@ -10,6 +10,7 @@ class Algorithm {
 
 			while (nextP != null) {
 				nextP = reg.tryPlacePerson(nextP);
+				System.out.println("is this what is wrong?");
 			}
 		}
 		//Do some stuff to return the values, probably going to have to save to a db or a file or something

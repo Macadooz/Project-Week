@@ -17,7 +17,21 @@ class Registrar {
 		//setup list of People
         ArrayList<Integer> tempList = db.getAllStudentIds();
         for (int i=0; i < tempList.size(); i++) {
-			allPeople.add(new Person(tempList.get(i)));
+			int j = 0;
+			int score = 0;
+			int[] prevYears = db.getPrevYears(tempList.get(i));
+			int grade = db.getGrade(tempList.get(i));
+			System.out.println(grade);
+			if (grade == -1) continue;
+			for(; j < 2022 - grade; j++ ){
+				
+				score += prevYears[j];
+			}
+			for (; j < 3; j++){
+				score += 4;
+			}
+				
+			allPeople.add(new Person(tempList.get(i),score));
 		}
 		
 	//setup list of Projects
@@ -54,7 +68,7 @@ class Registrar {
 			int t = i+1;
 			System.out.println("Number of people who got their #" + t + " choice: " + x[i]);	
 		}
-		
+		System.out.println("Number of people who are not placed is: " + unluckyPeople.size());	
 	}
 
 
@@ -65,37 +79,45 @@ class Registrar {
     */
     public Person tryPlacePerson(Person applicant) {
         //first check if the person has more choices
-    	if (applicant.getCurrentPreference() > 8) {
-            unluckyPeople.add(applicant);
+    	System.out.println("trying to place a person");
+	if (applicant.getCurrentPreference() > 8) {
+            System.out.println("unlucky");
+		unluckyPeople.add(applicant);
             return null;
     	}
-
 	
 		//lookup which project
+	System.out.println("a");
    		Integer pid = db.getPreference(applicant.getStudentID(), applicant.getCurrentPreference());
 		if(pid == -1){
+			System.out.println(3);
 			return getNextPerson();
 
 		}
-	
+		System.out.println(4);
 		//then try to actually place them
     		Project test = allCourses.get(pid);
-	
+		System.out.println(5);
+		if(test == null){System.out.println("AHAHAAHA"); return null;}
+		System.out.println(test.getMaxStudents());
+		System.out.println(test.getEnrolledStudents().size());
 		if (test.getEnrolledStudents().size() < test.getMaxStudents()){	
+
+			System.out.println(test.getEnrolledStudents().size());
 			test.addStudent(applicant);	
 
-	
+			System.out.println(2);
 			return null;	
 		}
-	
-		if (applicant.getScore() > test.getLowestStudent().getScore()){
+		else if (applicant.getScore() > test.getLowestStudent().getScore()){
+			System.out.println("Kicking someone out");
 			Person unlucky = test.getLowestStudent();
 			test.bumpLowestStudent();
 			test.addStudent(applicant);
 			unlucky.nextPreference();
 			return unlucky;
 		}
-
+		System.out.println(1);
 		applicant.nextPreference();
 		return applicant;
 
