@@ -11,6 +11,7 @@ class Registrar {
     Database db;
 	int currentIndex;
     int sizeOfPeople;
+    Random ran = new Random();
 
     /**
         Constructs Registrar object
@@ -19,9 +20,11 @@ class Registrar {
         db = new Database(url);
 
         ArrayList<Integer> tempList = db.getAllStudentIds();
+        int seniorAvg = 0;
+        int numSeniors = 0;
+
         for (int i=0; i < tempList.size(); i++) {
 			allPeople.add(new Person(tempList.get(i), calculateScore(tempList.get(i))));
-            // System.out.println(tempList.get(i));
         }
 
         tempList = db.getAllCourseIds();
@@ -36,20 +39,21 @@ class Registrar {
     }
 
     private int calculateScore(int studentId) {
+        StatWizard dylan = new StatWizard(db.getAllAverages());
+
         int prevScores[] = db.getPrevYears(studentId);
         int score=0;
         for (int i=0; i<3;i++){
             if (prevScores[i]>0) {
-                score += prevScores[i];
+                //calculate to correct for the fact that we're using ints 
+                //that have been multiplied by 100
+                score += prevScores[i]*100;
             }
             else {
-                score += 3;
+                //generate a random number to switch it up
+                score += dylan.getNextNormalValue();
             }
         }
-
-        score *= 100;
-        // score /= 3;
-
         return score;
     }
 
@@ -134,7 +138,7 @@ class Registrar {
         Person curPerson = new Person(1);
         int scores[] = new int[9];
 
-        saver.write(new ArrayList<>(Arrays.asList("ID", "ChoiceNum", "ProjID", "Gender", "Grade")));
+        saver.write(new ArrayList<>(Arrays.asList("ID", "ChoiceNum", "ProjID", "Gender", "Grade", "Score")));
 
         for (int i=0; i < tempList.size(); i++) {
             studentsInProject = allCourses.get(tempList.get(i)).getEnrolledStudents();
@@ -147,6 +151,7 @@ class Registrar {
                 outputStats.add(tempList.get(i)); //projectId
                 outputStats.add(db.getGender(curPerson.getStudentID())); //Gender
                 outputStats.add(db.getGrade(curPerson.getStudentID())); //grade
+                outputStats.add((curPerson.getScore())); //score
 
                 scores[curPerson.getCurrentPreference()-1]++;
                 saver.write(outputStats);
@@ -163,6 +168,7 @@ class Registrar {
             outputStats.add(-1);
             outputStats.add(db.getGender(curPerson.getStudentID()));
             outputStats.add(db.getGrade(curPerson.getStudentID()));
+            outputStats.add((curPerson.getScore())); //score
 
             scores[curPerson.getCurrentPreference()-1]++;
             saver.write(outputStats);

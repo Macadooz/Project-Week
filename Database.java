@@ -248,4 +248,23 @@ public class Database {
         }
         return IDValues;
     }
+
+    public ArrayList<Integer> getAllAverages() {
+        String sql = "SELECT * FROM StudentPrevAvgs WHERE PrevYearAvg != 0;";
+        ArrayList<Integer> AllValues = new ArrayList<Integer>();
+        try {
+            Connection conn = this.connect();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                AllValues.add(rs.getInt(1));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error in getAllCourseIds: " + e.getMessage());
+        }
+        return AllValues;
+    }
+
 }
