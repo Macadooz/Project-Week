@@ -1,6 +1,8 @@
 import java.util.*;
 import java.util.HashMap; 
 import java.util.Map; 
+import java.io.IOException;
+
 
 class Registrar {
     ArrayList<Person> allPeople = new ArrayList<Person>();
@@ -46,7 +48,7 @@ class Registrar {
         }
 
         score *= 100;
-        score /= 3;
+        // score /= 3;
 
         return score;
     }
@@ -122,11 +124,52 @@ class Registrar {
     }
 
     public void outputResults() {
-        ArrayList<Integer> tempList = db.getAllStudentIds();
+        Saver saver = new Saver("output.csv");
+
+        ArrayList<Integer> tempList = db.getAllCourseIds();
+        ArrayList outputStats = new ArrayList();
+        ArrayList totalStats = new ArrayList();
+        ArrayList<Person> studentsInProject = new ArrayList<Person>();
+
+        Person curPerson = new Person(1);
         int scores[] = new int[9];
+
+        saver.write(new ArrayList<>(Arrays.asList("ID", "ChoiceNum", "ProjID", "Gender", "Grade")));
+
         for (int i=0; i < tempList.size(); i++) {
-            scores[allPeople.get(i).getCurrentPreference()-1]++;
+            studentsInProject = allCourses.get(tempList.get(i)).getEnrolledStudents();
+            for (int p=0; p<studentsInProject.size(); p++) {
+                curPerson = studentsInProject.get(p);
+                outputStats.clear();
+                
+                outputStats.add(curPerson.getStudentID()); //Id
+                outputStats.add(curPerson.getCurrentPreference()); //Choice
+                outputStats.add(tempList.get(i)); //projectId
+                outputStats.add(db.getGender(curPerson.getStudentID())); //Gender
+                outputStats.add(db.getGrade(curPerson.getStudentID())); //grade
+
+                scores[curPerson.getCurrentPreference()-1]++;
+                saver.write(outputStats);
+            }
         }
+
+        // System.out.println(unluckyPeople.size());
+        for (int i=0; i<unluckyPeople.size(); i++) {
+            curPerson = unluckyPeople.get(i);
+            outputStats.clear();
+            
+            outputStats.add(curPerson.getStudentID());
+            outputStats.add(curPerson.getCurrentPreference());
+            outputStats.add(-1);
+            outputStats.add(db.getGender(curPerson.getStudentID()));
+            outputStats.add(db.getGrade(curPerson.getStudentID()));
+
+            scores[curPerson.getCurrentPreference()-1]++;
+            saver.write(outputStats);
+        }
+
+        saver.close();
+
         for (int i=0; i<9; i++) {
             System.out.println("Choice"+(i+1)+": "+scores[i]);
         }
