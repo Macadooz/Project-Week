@@ -40,6 +40,9 @@ public class Project{
 	public void setEnrolledStudents(ArrayList<Person> newStudents){
 		this.enrolledStudents = newStudents;
 	}
+	public ArrayList<Person> getEnrolledStudents(){
+		return enrolledStudents;
+	}
 	public void addStudent(Person p){
 		this.enrolledStudents.add(p);
 	}
@@ -52,12 +55,27 @@ public class Project{
 	public void setNumGirls(int girls){
 		this.numGirls = girls;
 	}
-	public int getLowestScore() {
-		int lowestScore = enrolledStudents.get(0).getScore();
-		for (int i=0; i<enrolledStudents.size(); i++) {
-			lowestScore = Math.min(lowestScore, enrolledStudents.get(i).getScore());
+	public Person getLowestScorePerson() {
+		if (enrolledStudents.size() == 0) {
+			System.out.println("Printing null");
+			return null;
 		}
-		return lowestScore;
-	}
+		
+		int lowestScore = enrolledStudents.get(0).getScore();
+		Person lowestScorePerson = enrolledStudents.get(0);
 
+		for (int i=0; i<enrolledStudents.size(); i++) {
+			if (enrolledStudents.get(i).getScore() < lowestScore) {
+				lowestScore = enrolledStudents.get(i).getScore();
+				lowestScorePerson = enrolledStudents.get(i);
+			}
+		}
+		return lowestScorePerson;
+	}
+	public boolean isFull() {
+		return enrolledStudents.size() >= maxStudents;
+	}
+	public String toString() {
+		return "Project#" + projectID+ enrolledStudents.toString();
+	}
 }
