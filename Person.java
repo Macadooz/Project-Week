@@ -42,4 +42,9 @@ public class Person{
 	public int getScore(){
 		return this.score;
 	}
+
+	public void nextPreference(){
+		this.currentPreference++;
+		//Should also consider adding some to score here. 
+	}
 }

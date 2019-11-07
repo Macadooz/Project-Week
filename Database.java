@@ -194,6 +194,7 @@ public class Database {
             return rs.getInt(1);
 
         } catch (SQLException e) {
+
             System.out.println(e.getMessage());
         }
         return -1;
