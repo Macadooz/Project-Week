@@ -181,9 +181,3 @@ class Registrar {
         }
     }
 }
-
-//place person, getNextPerson
-//maybe entire  Algorithm?
-//how much do we want registrar to do?????
-//registrar = no main  fucntion
-//while registrar has more people place next person

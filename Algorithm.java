@@ -5,6 +5,7 @@ class Algorithm {
 		Registrar reg = new Registrar("jdbc:sqlite:pweek.db");
 
 		Person nextP;
+		//while registrar has more unsorted people
 		while (reg.hasMorePeople()) {
 			nextP = reg.getNextPerson();
 
@@ -13,8 +14,6 @@ class Algorithm {
 			}
 		}
 		//Do some stuff to return the values, probably going to have to save to a db or a file or something
-		// reg.printProjects();
-		// reg.printBadPeople();
 		reg.outputResults();
 	}
 }
