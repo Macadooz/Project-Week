@@ -3,15 +3,16 @@ import java.util.*;
 
 class StatWizard {
 	Random ran = new Random();
-	double stanDev, mean, tempVar;
+	double stanDev, mean;
 
 	public StatWizard(ArrayList<Integer> averageValues) {
         mean = 0;
         for (int i=0; i<averageValues.size(); i++) {
         	mean += averageValues.get(i);
         }
-        mean /= averageValues.size();
+        mean = mean / averageValues.size();
 
+        double tempVar = 0;
         for (int i=0; i<averageValues.size(); i++) {
         	tempVar += Math.pow((averageValues.get(i) - mean), 2);
         }

@@ -2,7 +2,11 @@ import java.util.*;
 
 class Algorithm {
 	public static void main(String[] args) {
-		Registrar reg = new Registrar("jdbc:sqlite:pweek.db");
+		solve("jdbc:sqlite:pweek.db", true);
+	}
+
+	public static void solve(String url, boolean randomize) {
+		Registrar reg = new Registrar(url, randomize);
 
 		Person nextP;
 		//while registrar has more unsorted people

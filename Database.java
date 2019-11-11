@@ -18,10 +18,12 @@ import java.util.*;
 
 public class Database {
     private final String url;
+    Connection conn;
 
     public Database(String url) {
         //some setup goes here
         this.url = url;
+        conn = this.connect();
     }
 
     private Connection connect() {
@@ -49,7 +51,6 @@ public class Database {
         String sql = "SELECT ProjId FROM Raw WHERE StudentID = (?) AND PrefNum = (?)";
 
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, studentId);
             stmt.setDouble(2, preference);
@@ -77,7 +78,6 @@ public class Database {
         String sql = "SELECT Gender FROM Raw WHERE StudentID = (?)";
 
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, studentId);
 
@@ -104,7 +104,6 @@ public class Database {
         String sql = "SELECT GradYear FROM Raw WHERE StudentID = (?)";
 
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, studentId);
 
@@ -134,7 +133,6 @@ public class Database {
         sql = "SELECT Rank18, Rank17, Rank16 FROM StudentPrevAvgs WHERE StudentID = (?)";
 
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setDouble(1, studentId);
@@ -163,7 +161,6 @@ public class Database {
         String sql = "SELECT MinStudents FROM ProjStats WHERE ProjID = (?)";
 
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, projID);
 
@@ -188,7 +185,6 @@ public class Database {
         String sql = "SELECT MaxStudents FROM ProjStats WHERE ProjID = (?)";
 
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setDouble(1, projID);
 
@@ -211,7 +207,6 @@ public class Database {
         ArrayList<Integer> IDValues = new ArrayList<Integer>();
 
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             ResultSet rs = stmt.executeQuery();
@@ -235,7 +230,6 @@ public class Database {
         ArrayList<Integer> IDValues = new ArrayList<Integer>();
 
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             ResultSet rs = stmt.executeQuery();
@@ -250,10 +244,9 @@ public class Database {
     }
 
     public ArrayList<Integer> getAllAverages() {
-        String sql = "SELECT * FROM StudentPrevAvgs WHERE PrevYearAvg != 0;";
+        String sql = "SELECT PrevYearAvg FROM StudentPrevAvgs WHERE PrevYearAvg > '0';";
         ArrayList<Integer> AllValues = new ArrayList<Integer>();
         try {
-            Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             ResultSet rs = stmt.executeQuery();

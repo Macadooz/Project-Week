@@ -12,20 +12,28 @@ class Registrar {
 	int currentIndex;
     int sizeOfPeople;
     Random ran = new Random();
+    StatWizard dylan;
+    
 
     /**
         Constructs Registrar object
     */
-    public Registrar(String url) {
+    public Registrar(String url, boolean shuffle) {
         db = new Database(url);
 
         ArrayList<Integer> tempList = db.getAllStudentIds();
+        dylan = new StatWizard(db.getAllAverages());
+
         int seniorAvg = 0;
         int numSeniors = 0;
 
         for (int i=0; i < tempList.size(); i++) {
 			allPeople.add(new Person(tempList.get(i), calculateScore(tempList.get(i))));
         }
+
+        if (shuffle)
+             Collections.shuffle(allPeople); 
+
 
         tempList = db.getAllCourseIds();
         int pid;
@@ -39,19 +47,15 @@ class Registrar {
     }
 
     private int calculateScore(int studentId) {
-        StatWizard dylan = new StatWizard(db.getAllAverages());
-
         int prevScores[] = db.getPrevYears(studentId);
         int score=0;
         for (int i=0; i<3;i++){
             if (prevScores[i]>0) {
-                //calculate to correct for the fact that we're using ints 
-                //that have been multiplied by 100
                 score += prevScores[i]*100;
             }
             else {
                 //generate a random number to switch it up
-                score += dylan.getNextNormalValue();
+                score += Math.abs(dylan.getNextNormalValue() * 100);
             }
         }
         return score;
@@ -60,7 +64,7 @@ class Registrar {
     /**
         public Person tryPlacePerson(Person p)
 
-        Attempts to place a person p into the
+        Attempts to place a person p into their next project
     */
     public Person tryPlacePerson(Person p) {
         //first check if the person has more choices
@@ -129,6 +133,8 @@ class Registrar {
 
     public void outputResults() {
         Saver saver = new Saver("output.csv");
+
+        //new ArrayList(allCourses.keySet());
 
         ArrayList<Integer> tempList = db.getAllCourseIds();
         ArrayList outputStats = new ArrayList();
