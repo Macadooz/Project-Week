@@ -16,7 +16,8 @@ class Registrar {
     
 
     /**
-        Constructs Registrar object
+        Constructs Registrar object, given a database url, and shuffle, which indicates if the list of people 
+        should be randomized at runtime
     */
     public Registrar(String url, boolean shuffle) {
         db = new Database(url);
@@ -31,14 +32,15 @@ class Registrar {
 			allPeople.add(new Person(tempList.get(i), calculateScore(tempList.get(i))));
         }
 
+        //Randomize the list, if shuffle == true
         if (shuffle)
              Collections.shuffle(allPeople); 
 
-
+        //set the templist of the course ids, to iterate through
         tempList = db.getAllCourseIds();
         int pid;
         for (int i=0; i < tempList.size(); i++) {
-            pid = tempList.get(i);
+            pid = tempList.get(i);                                          //create new project, put it into the hastable <courseID, course>
 			allCourses.put(pid, new Project(pid, db.getMaxStudents(pid)));
 		}
 
@@ -46,15 +48,22 @@ class Registrar {
         sizeOfPeople = allPeople.size();
     }
 
+    /**
+        private int calculateScore(int studentId)
+
+        Calculates the score for a given student ID
+        Calculated by sum of previous years *100
+        If one year they did not go on project, add random value from standard distributon of scores
+    */
     private int calculateScore(int studentId) {
-        int prevScores[] = db.getPrevYears(studentId);
+        int prevScores[] = db.getPrevYears(studentId); //Get previous year placements (NOTE: Can Possibly be saved into an object at the beginning)
         int score=0;
         for (int i=0; i<3;i++){
             if (prevScores[i]>0) {
-                score += prevScores[i]*100;
+                score += prevScores[i]*100; //multiply by 100, since we committed to using ints, and we need at least 2 figures of precison
             }
             else {
-                //generate a random number to switch it up
+                //generate a random number to switch it up, from the StatWizard object
                 score += Math.abs(dylan.getNextNormalValue() * 100);
             }
         }
@@ -67,32 +76,36 @@ class Registrar {
         Attempts to place a person p into their next project
     */
     public Person tryPlacePerson(Person p) {
-        //first check if the person has more choices
+        //first check if the person has more choices; if they are at 9, give up because they're out of choices
+        //add them to unlucky people
         if ( p.getCurrentPreference() > 8) {
             unluckyPeople.add(p);
             return null;
         }
 
         int nextPrefChoice = db.getPreference(p.getStudentID(), p.getCurrentPreference());
-        if (nextPrefChoice == Integer.MIN_VALUE || nextPrefChoice == 0) {
-            unluckyPeople.add(p);
+        if (nextPrefChoice == Integer.MIN_VALUE || nextPrefChoice == 0) {   //if the next choice is empty or null, give up, since presumably they are out of choices
+            unluckyPeople.add(p);                                         
             return null;
         }
 
         Project nextProject = allCourses.get(nextPrefChoice);
 
+        //if there is an open spot in the person's next project
         if (!nextProject.isFull()) {
             nextProject.addStudent(p);
             return null;
         }
 
+        //get the person with the lowest score NOTE: This can be refactored, perhaps using insertionsort to 
+        //make it faster to get the person with the lowest score
         Person lowestPerson = nextProject.getLowestScorePerson();
 
         if (lowestPerson.getScore() < p.getScore()) {
             nextProject.removeStudent(lowestPerson);
             nextProject.addStudent(p);
 
-            lowestPerson.increaseCurrentPreference();
+            lowestPerson.increaseCurrentPreference(); //tell the person to advance to their next peference
             return lowestPerson;
         }        
         p.increaseCurrentPreference();
@@ -121,20 +134,29 @@ class Registrar {
         return allPeople.get(currentIndex++);
     }
 
+    /**
+        public void printProjects()
+
+        print all of the projects and their people.
+    */
     public void printProjects() {
         ArrayList<Integer> tempList = db.getAllCourseIds();
         for (int i=0; i<tempList.size(); i++)
             System.out.println(allCourses.get(tempList.get(i)));
-    }
-
-    public void printBadPeople() {
         System.out.println(unluckyPeople);
     }
 
-    public void outputResults() {
-        Saver saver = new Saver("output.csv");
+    /**
+        public void outputResults(String url)
 
-        //new ArrayList(allCourses.keySet());
+        Save the results to a CSV called 'output.csv'
+
+        Currently saves "ID", "ChoiceNum", "ProjID", "Gender", "Grade", "Score"
+
+        Also prints out the numbers of people in each num
+    */
+    public void outputResults(String url) {
+        Saver saver = new Saver(url);
 
         ArrayList<Integer> tempList = db.getAllCourseIds();
         ArrayList outputStats = new ArrayList();
@@ -164,7 +186,6 @@ class Registrar {
             }
         }
 
-        // System.out.println(unluckyPeople.size());
         for (int i=0; i<unluckyPeople.size(); i++) {
             curPerson = unluckyPeople.get(i);
             outputStats.clear();
